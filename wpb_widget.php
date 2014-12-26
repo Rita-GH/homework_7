@@ -18,11 +18,14 @@ if(!class_exists('wpb_widget')) {
                 'wpb_widget',
 
 // Widget name will appear in UI
-                __('WPBeginner Widget', 'wpb_widget_domain'),
+                __('WPB Widget', 'wpb_widget_domain'),
 
 // Widget description
-                array('description' => __('Sample widget based on WPBeginner Tutorial', 'wpb_widget_domain'),)
+                array('description' => __('WPB Tutorial', 'wpb_widget_domain'),)
             );
+            if ( is_active_widget(false, false, $this->id_base, true) ) {
+                wp_enqueue_style( 'bootstrap', plugins_url('arzamath_17th') . '/dist/css/bootstrap.css' );
+            }
         }
 
 // Creating widget front-end
@@ -42,15 +45,18 @@ if(!class_exists('wpb_widget')) {
             if (have_posts()) :
                 echo "";
                 while (have_posts()) : the_post();?>
+                    <div class="hero-unit">
                     <ul>
                         <li>
-                            <a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a>
+                            <a class="h3" href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a>
                         </li>
                         <li>
                             <?php if ( get_post_meta( get_the_ID(), 'meta_c', true ) ) : ?>
                                 <a href="<?php the_permalink() ?>" rel="bookmark">
-                                    <img class="meta_c" src="<?php echo get_post_meta( get_the_ID(), 'meta_c', true ); ?>" alt="<?php the_title(); ?>" />
+                                    <img src="<?php echo get_post_meta( get_the_ID(), 'meta_c', true ); ?>" alt="<?php the_title(); ?>" />
                                 </a>
+
+
                             <?php endif; ?>
                         </li>
                         <li>
@@ -67,7 +73,9 @@ if(!class_exists('wpb_widget')) {
                                 ?>
                             </select>
                         </li>
+                        <li><p><a  href="<?php the_permalink() ?>" rel="bookmark" class="btn btn-mini btn-info ">Learn more &raquo;</a></p></li>
                     </ul>
+                    </div>
                 <?php
                 endwhile;
                 echo "";

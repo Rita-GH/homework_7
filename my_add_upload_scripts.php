@@ -26,6 +26,8 @@ if(!class_exists('my_add_upload_scripts')) {
                 , array('jquery', 'media-upload', 'thickbox')
             );
             wp_enqueue_script('my-upload-script');
+
+
         }
 
 // Запускаем функцию подключения загрузчика

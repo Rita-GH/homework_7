@@ -1,7 +1,7 @@
 === arzamath_17th ===
 Contributors: RB
 Tags: arzamath_17th
-Donate link: https://github.com/Rita-GH/homework6
+Donate link:  https://github.com/Rita-GH/homework6.git
 Requires at least: 1.0.0
 Tested up to: 4.1
 License: GPLv2
